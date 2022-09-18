@@ -9,9 +9,11 @@ const validateUsername = () => {
   } else if (usernameInput.value.length > 3 && usernameInput.value.length < 25) {
     username_check.style.color = 'green';
     usernameInput.style.borderColor = 'green';
+    return true;
   } else {
     username_check.style.color = 'red';
     usernameInput.style.borderColor = 'red';
+    return false;
   }
 };
 
@@ -24,9 +26,11 @@ const validatePassword = () => {
   if (passwordInput.value.match(pw_match)) {
     passwordInput.style.borderColor = 'green';
     pw_check.style.color = 'green';
+    return true;
   } else {
     passwordInput.style.borderColor = 'red';
     pw_check.style.color = 'red';
+    return false;
   }
 };
 
@@ -39,10 +43,12 @@ const confirmPassword = () => {
   if (passwordInput.value === confirmPasswordInput.value) {
     confirmPasswordInput.style.borderColor = 'green';
     confirmPasswordCheck.innerHTML = '';
+    return true;
   } else {
     confirmPasswordInput.style.borderColor = 'red';
     confirmPasswordCheck.innerHTML = 'Passwords do not match!';
     confirmPasswordCheck.style.color = 'red';
+    return false;
   }
 };
 
@@ -60,4 +66,15 @@ const togglePasswordVisivility = () => {
     eye.classList.add('fa-eye-slash');
     eye.classList.remove('fa-eye');
   }
+};
+
+// Popup showup on submission of form
+const submitForm = () => {
+  if (!validateUsername()) alert('Invalid Username');
+  else if (!validatePassword())
+    alert(
+      `Password must contain 8 characters that include at least 1 lowercase, 1 uppercase, 1 number and 1 special character(!@#$%^&*)`
+    );
+  else if (!confirmPassword()) alert('Passwords do not match!');
+  else alert('You have signed up succesfully');
 };
