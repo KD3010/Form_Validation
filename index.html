@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="form-container">
+      <form action="" class="form-body" name="signup-form">
+        <h1 style="text-align: center; margin-bottom: 1.5rem">Sign Up</h1>
+        <div class="form-input">
+          <label for="username">Username: </label>
+          <input
+            type="text"
+            min="3"
+            max="25"
+            name="username"
+            id="username"
+            required
+            onchange="validateUsername()"
+          />
+          <label for="username" class="warning" id="username_check"
+            >Username must be between 3 to 25 characters</label
+          >
+        </div>
+
+        <div class="form-input">
+          <label for="email">Email: </label>
+          <input type="email" name="email" id="email" required />
+        </div>
+
+        <div class="form-input">
+          <label for="password">Password: </label>
+          <div class="password-container">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              onchange="validatePassword()"
+              width="100%"
+            />
+            <i
+              class="fa-regular fa-eye-slash"
+              id="toggle_password"
+              style="margin-left: -30px; cursor: pointer"
+              onclick="togglePasswordVisivility()"
+            ></i>
+          </div>
+
+          <label for="password" id="passwordCheck" class="warning"
+            >Password must contain 8 characters that include at least 1 lowercase, 1 uppercase, 1
+            number and 1 special character(!@#$%^&*)</label
+          >
+        </div>
+
+        <div class="form-input">
+          <label for="confirm_password">Confirm Password: </label>
+          <input
+            type="password"
+            name="confirm_password"
+            id="confirm_password"
+            required
+            onchange="confirmPassword()"
+          />
+          <label for="confirm_password" class="warning" id="confirmPasswordCheck"
+            >Please enter the password again</label
+          >
+        </div>
+
+        <input type="submit" value="Sign Up" class="form-button" />
+      </form>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
